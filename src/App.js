@@ -1,20 +1,26 @@
-import "./App.css";
-import { RadioGroup, RadioOption } from "./Radio";
-import { useState } from "react";
+import { ChakraProvider } from "@chakra-ui/react";
+import Header from "./components/Header";
+import LandingSection from "./components/LandingSection";
+import ProjectsSection from "./components/ProjectsSection";
+import ContactMeSection from "./components/ContactMeSection";
+import Footer from "./components/Footer";
+import { AlertProvider } from "./context/alertContext";
+import Alert from "./components/Alert";
 
 function App() {
-  const [selected, setSelected] = useState("");
   return (
-    <div className="App">
-      <h2>How did you hear about Little Lemon?</h2>
-      <RadioGroup onChange={setSelected} selected={selected}>
-        <RadioOption value="social_media">Social Media</RadioOption>
-        <RadioOption value="friends">Friends</RadioOption>
-        <RadioOption value="advertising">Advertising</RadioOption>
-        <RadioOption value="other">Other</RadioOption>
-      </RadioGroup>
-      <button disabled={!selected}>Submit</button>
-    </div>
+    <ChakraProvider>
+      <AlertProvider>
+        <main>
+          <Header />
+          <LandingSection />
+          <ProjectsSection />
+          <ContactMeSection />
+          <Footer />
+          <Alert />
+        </main>
+      </AlertProvider>
+    </ChakraProvider>
   );
 }
 
